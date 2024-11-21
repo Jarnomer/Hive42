@@ -6,98 +6,36 @@
 #    By: jmertane <jmertane@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/28 10:37:44 by jmertane          #+#    #+#              #
-#    Updated: 2024/02/06 17:49:09 by jmertane         ###   ########.fr        #
+#    Updated: 2024/02/08 16:53:55 by jmertane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# **************************************************************************** #
-#    VARIABLES
-# **************************************************************************** #
-
 NAME := libft.a
+
+CC   := cc
+RM   := rm -rf
+AR   := ar -rcs
+
+CFLAGS    := -Wall -Werror -Wextra
+CPPFLAGS  := -c -MMD -MP
+MAKEFLAGS += --no-print-directory -j4
 
 SOURCEDIR := sources
 HEADERDIR := includes
 BUILDDIR  := build
 BUILDLOG  := build.log
-BONUSFLAG := .bonus
 
-# **************************************************************************** #
-#    COMMANDS
-# **************************************************************************** #
-
-RM := rm -rf
-AR := ar -rcs
-
-# **************************************************************************** #
-#    COMPILATION
-# **************************************************************************** #
-
-CC        := cc
-CFLAGS    := -Wall -Werror -Wextra
-CPPFLAGS  := -c -MMD -MP
-MAKEFLAGS += --no-print-directory -j4
-
-# **************************************************************************** #
-#    SOURCES
-# **************************************************************************** #
-
-MODULES := bonus
-
-SOURCES := ft_isalpha.c \
-           ft_isdigit.c \
-           ft_isalnum.c \
-           ft_isascii.c \
-           ft_isprint.c \
-           ft_strlen.c \
-           ft_memset.c \
-           ft_bzero.c \
-           ft_memcpy.c \
-           ft_memmove.c \
-           ft_strlcpy.c \
-           ft_strlcat.c \
-           ft_toupper.c \
-           ft_tolower.c \
-           ft_strchr.c \
-           ft_strrchr.c \
-           ft_strncmp.c \
-           ft_memchr.c \
-           ft_memcmp.c \
-           ft_strnstr.c \
-           ft_atoi.c \
-           ft_calloc.c \
-           ft_strdup.c \
-           ft_substr.c \
-           ft_strjoin.c \
-           ft_strtrim.c \
-           ft_split.c \
-           ft_itoa.c \
-           ft_strmapi.c \
-           ft_striteri.c \
-           ft_putchar_fd.c \
-           ft_putstr_fd.c \
-           ft_putendl_fd.c \
-           ft_putnbr_fd.c \
-
-SOURCES_BONUS =	ft_lstnew_bonus.c \
-                ft_lstadd_front_bonus.c \
-                ft_lstsize_bonus.c \
-                ft_lstlast_bonus.c \
-                ft_lstadd_back_bonus.c \
-                ft_lstdelone_bonus.c \
-                ft_lstclear_bonus.c \
-                ft_lstiter_bonus.c \
-                ft_lstmap_bonus.c
+SOURCES := 	ft_strlen.c \
+			ft_putchar_fd.c \
+			ft_putstr_fd.c \
+			ft_putendl_fd.c \
+			ft_putnbr_fd.c
 
 OBJECTS := $(addprefix $(BUILDDIR)/, $(SOURCES:.c=.o))
 
-OBJECTS_BONUS = $(addprefix $(BUILDDIR)/, $(SOURCES_BONUS:.c=.o))
-
-SOURCEDIR += $(addprefix $(SOURCEDIR)/, $(MODULES))
-
 INCLUDES := $(addprefix -I, $(HEADERDIR))
 
-DEPS := $(OBJECTS:.o=.d) $(OBJECTS_BONUS:.o=.d)
+DEPS := $(OBJECTS:.o=.d)
 
 vpath %.c $(SOURCEDIR)
 
@@ -110,13 +48,6 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	@$(AR) $(NAME) $^
 	printf "$(V)$(B)Binary:$(T)$(Y) $(NAME) $(T)\n"
-
-bonus: $(BONUSFLAG)
-
-$(BONUSFLAG): $(OBJECTS) $(OBJECTS_BONUS)
-	@$(AR) $(NAME) $^
-	printf "$(V)$(B)Binary:$(T)$(Y) $(NAME) $(T)\n"
-	@touch $(BONUSFLAG)
 
 re: fclean
 	make all
@@ -179,7 +110,7 @@ $(foreach build, $(BUILDDIR), $(eval $(call build_cmd, $(build))))
 #    PHONY
 # **************************************************************************** #
 
-.PHONY: all bonus re
+.PHONY: all re
 .PHONY: clean fclean
 
 .SILENT:

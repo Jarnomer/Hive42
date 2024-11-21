@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jmertane <jmertane@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/28 10:37:44 by jmertane          #+#    #+#              #
-#    Updated: 2024/02/06 17:49:09 by jmertane         ###   ########.fr        #
+#    Created: 2023/11/09 15:57:04 by jmertane          #+#    #+#              #
+#    Updated: 2024/02/08 16:22:51 by jmertane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,22 @@
 #    VARIABLES
 # **************************************************************************** #
 
-NAME := libft.a
+NAME := libftprintf.a
 
 SOURCEDIR := sources
 HEADERDIR := includes
 BUILDDIR  := build
 BUILDLOG  := build.log
-BONUSFLAG := .bonus
+
+LIBFTDIR := ./libft
+LIBFTBIN := libft.a
 
 # **************************************************************************** #
 #    COMMANDS
 # **************************************************************************** #
 
-RM := rm -rf
-AR := ar -rcs
+RM   := rm -rf
+AR   := ar -r
 
 # **************************************************************************** #
 #    COMPILATION
@@ -42,62 +44,14 @@ MAKEFLAGS += --no-print-directory -j4
 #    SOURCES
 # **************************************************************************** #
 
-MODULES := bonus
-
-SOURCES := ft_isalpha.c \
-           ft_isdigit.c \
-           ft_isalnum.c \
-           ft_isascii.c \
-           ft_isprint.c \
-           ft_strlen.c \
-           ft_memset.c \
-           ft_bzero.c \
-           ft_memcpy.c \
-           ft_memmove.c \
-           ft_strlcpy.c \
-           ft_strlcat.c \
-           ft_toupper.c \
-           ft_tolower.c \
-           ft_strchr.c \
-           ft_strrchr.c \
-           ft_strncmp.c \
-           ft_memchr.c \
-           ft_memcmp.c \
-           ft_strnstr.c \
-           ft_atoi.c \
-           ft_calloc.c \
-           ft_strdup.c \
-           ft_substr.c \
-           ft_strjoin.c \
-           ft_strtrim.c \
-           ft_split.c \
-           ft_itoa.c \
-           ft_strmapi.c \
-           ft_striteri.c \
-           ft_putchar_fd.c \
-           ft_putstr_fd.c \
-           ft_putendl_fd.c \
-           ft_putnbr_fd.c \
-
-SOURCES_BONUS =	ft_lstnew_bonus.c \
-                ft_lstadd_front_bonus.c \
-                ft_lstsize_bonus.c \
-                ft_lstlast_bonus.c \
-                ft_lstadd_back_bonus.c \
-                ft_lstdelone_bonus.c \
-                ft_lstclear_bonus.c \
-                ft_lstiter_bonus.c \
-                ft_lstmap_bonus.c
+SOURCES   =	ft_printf.c \
+            ft_printf_fmt.c
 
 OBJECTS := $(addprefix $(BUILDDIR)/, $(SOURCES:.c=.o))
 
-OBJECTS_BONUS = $(addprefix $(BUILDDIR)/, $(SOURCES_BONUS:.c=.o))
+INCLUDES := $(addprefix -I, $(HEADERDIR) $(LIBFTDIR)/$(HEADERDIR))
 
-SOURCEDIR += $(addprefix $(SOURCEDIR)/, $(MODULES))
-
-INCLUDES := $(addprefix -I, $(HEADERDIR))
-
-DEPS := $(OBJECTS:.o=.d) $(OBJECTS_BONUS:.o=.d)
+DEPS := $(OBJECTS:.o=.d)
 
 vpath %.c $(SOURCEDIR)
 
@@ -107,16 +61,14 @@ vpath %.c $(SOURCEDIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	@$(AR) $(NAME) $^
+$(NAME): libft $(OBJECTS)
+	@$(AR) $(NAME) $(OBJECTS)
 	printf "$(V)$(B)Binary:$(T)$(Y) $(NAME) $(T)\n"
 
-bonus: $(BONUSFLAG)
-
-$(BONUSFLAG): $(OBJECTS) $(OBJECTS_BONUS)
-	@$(AR) $(NAME) $^
-	printf "$(V)$(B)Binary:$(T)$(Y) $(NAME) $(T)\n"
-	@touch $(BONUSFLAG)
+libft:
+	@make -C $(LIBFTDIR)
+	@cp $(LIBFTDIR)/$(LIBFTBIN) .
+	@mv $(LIBFTBIN) $(NAME)
 
 re: fclean
 	make all
@@ -142,7 +94,8 @@ endef
 # **************************************************************************** #
 
 clean:
-	$(call delete_cmd, $(BUILDDIR), $(BUILDLOG), $(BONUSFLAG))
+	@make -C $(LIBFTDIR) fclean
+	$(call delete_cmd, $(BUILDDIR), $(BUILDLOG))
 
 fclean: clean
 	$(call delete_cmd, $(NAME))
@@ -179,7 +132,7 @@ $(foreach build, $(BUILDDIR), $(eval $(call build_cmd, $(build))))
 #    PHONY
 # **************************************************************************** #
 
-.PHONY: all bonus re
+.PHONY: all libft re
 .PHONY: clean fclean
 
 .SILENT:
