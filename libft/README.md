@@ -1,6 +1,6 @@
 # libft
 
-Some of the Standard 🇨 Library functions with added sprinkle of spicing 🌶️.
+Standard 🇨 Library functions with added sprinkle of spicing 🌶️.
 
 ## General
 
@@ -34,7 +34,7 @@ char *ft_strjoin(char const *s1, char const *s2)
 }
 ```
 
-## Contents
+## Functions
 
 Here is the table of all functions, including bonus.
 

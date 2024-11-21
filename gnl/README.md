@@ -50,7 +50,7 @@ char *clean_list(t_gnl **lst, char *line)
 }
 ```
 
-In `bonus`, multiple file descriptors must be supported which introduces some minor edits to `gnl` functions.
+In `bonus`, multiple file descriptors must be supported which introduces some minor changes to `gnl` functions.
 
 Project `passes` many of the 42 `testers`, including Franzinette `strict`, although timeout has to be modified.
 
