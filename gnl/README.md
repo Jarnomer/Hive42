@@ -16,12 +16,38 @@ typedef struct s_gnl
 }	t_gnl;
 ```
 
-BUFFER_SIZE defines how many characters are read each time.
+`BUFFER_SIZE` defines how many characters are read each time. If not included during runtime, it is set by header.
 
 ```c
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
+```
+
+Function `clean_list` frees all nodes every time new line is build or everything if `malloc` fails or `EOF` is reached.
+
+```c
+char	*clean_list(t_gnl **lst, char *line)
+{
+	t_gnl	*temp;
+
+	if (!lst || !*lst)
+		return (NULL);
+	while ((*lst)->next)
+	{
+		temp = (*lst)->next;
+		free((*lst)->content);
+		free(*lst);
+		*lst = temp;
+	}
+	if (line && *line)
+		return (line);
+	free((*lst)->content);
+	free(*lst);
+	free(line);
+	*lst = NULL;
+	return (NULL);
+}
 ```
 
 In `bonus`, multiple file descriptors must be supported which introduces some minor edits to `gnl` functions.
