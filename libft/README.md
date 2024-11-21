@@ -8,15 +8,15 @@ Here is the table of functions, including bonus.
 
 | **Libc**              | **Additional**        | **Bonus**               |
 |------------------------|-----------------------|--------------------------|
-| `ft_atoi`           | `ft_itoa`          | `ft_lstadd_back_bonus`|
-| `ft_bzero`          | `ft_putchar_fd`    | `ft_lstadd_front_bonus`|
-| `ft_calloc`         | `ft_putendl_fd`    | `ft_lstclear_bonus`   |
-| `ft_isalnum`        | `ft_putnbr_fd`     | `ft_lstdelone_bonus`  |
-| `ft_isalpha`        | `ft_putstr_fd`     | `ft_lstiter_bonus`    |
-| `ft_isascii`        | `ft_split`         | `ft_lstlast_bonus`    |
-| `ft_isdigit`        | `ft_strdup`        | `ft_lstmap_bonus`     |
-| `ft_isprint`        | `ft_striteri`      | `ft_lstnew_bonus`     |
-| `ft_memchr`         | `ft_strjoin`       | `ft_lstsize_bonus`    |
+| `ft_atoi`           | `ft_itoa`          | `ft_lstadd_back`|
+| `ft_bzero`          | `ft_putchar_fd`    | `ft_lstadd_front`|
+| `ft_calloc`         | `ft_putendl_fd`    | `ft_lstclear`   |
+| `ft_isalnum`        | `ft_putnbr_fd`     | `ft_lstdelone`  |
+| `ft_isalpha`        | `ft_putstr_fd`     | `ft_lstiter`    |
+| `ft_isascii`        | `ft_split`         | `ft_lstlast`    |
+| `ft_isdigit`        | `ft_strdup`        | `ft_lstmap`     |
+| `ft_isprint`        | `ft_striteri`      | `ft_lstnew`     |
+| `ft_memchr`         | `ft_strjoin`       | `ft_lstsize`    |
 | `ft_memcmp`         | `ft_strmapi`       |                          |
 | `ft_memcpy`         | `ft_strtrim`       |                          |
 | `ft_memmove`        | `ft_substr`        |                          |
@@ -39,7 +39,7 @@ Bonuses are located in their own separate `bonus` directory under `sources`.
 
 ## General
 
-Passes all of the 42 testers successfully including Franzinette `strict`.
+Passes all of the 42 testers successfully, including Franzinette `strict`.
 
 Build as library 📚 thus each function is using each other when applicable.
 
