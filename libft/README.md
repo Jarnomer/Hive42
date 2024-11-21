@@ -1,16 +1,16 @@
 # libft
 
-Some of the Standard 🇨 Library functions with added sprinkle of spice 🌶️.
+Some of the Standard 🇨 Library functions with added sprinkle of spicing 🌶️.
 
 ## General
 
 `Libft` is focused on creating personal function library in C.
 
-The library inludes a selection of replicated `Libc` functions aimed to be used in following 42 projects.
+The library inludes a selection of replicated `Libc` functions aimed to be used in upcoming 42 projects.
 
 It is completed with `additional`, mainly string focused functions. `Bonus` is centered around `linked list`.
 
-Project `passes` many of the 42 `testers` successfully, including Franzinette `strict`.
+Project `passes` many of the 42 `testers`, including Franzinette `strict`.
 
 Build as a library and thus each function is relying on each other when applicable.
 
