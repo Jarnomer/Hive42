@@ -1,6 +1,6 @@
 # libft
 
-Standard 🇨 Library functions with added sprinkle of spicing 🌶️.
+Standard 🇨 Library functions with added spicing 🌶️.
 
 ## General
 
