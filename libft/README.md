@@ -31,14 +31,16 @@ Here is the table of functions, including bonus.
 | `ft_tolower`        |                       |                          |
 | `ft_toupper`        |                       |                          |
 
-## General
-
-Written fully according the norm and passes all of the 42 testers successfully.
-
-Build as library 📚 meaning each function is written using each other when possible.
-
-Mandatory part is combination of Libc and additional functions, these are located in `sources` folder.
+Mandatory part combines Libc and additional functions, these are located in `sources` folder.
 
 Header is in includes, `-I` compiler is used to allow include `<libft.h>` instead of `"libft.h"`.
 
 Bonuses are located in their own separate `bonus` directory under `sources`.
+
+## General
+
+Passes all of the 42 testers successfully including Franzinette `strict`.
+
+Build as library 📚 thus each function is using each other when applicable.
+
+For other information, see the main page.
