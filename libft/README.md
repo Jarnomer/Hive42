@@ -1,6 +1,20 @@
 # libft
 
-Some of Standard 🇨 Library functions with little bit of spice 🌶️.
+Some of Standard 🇨 Library functions with a sprinkle of spice 🌶️.
+
+## General
+
+`Libft` is focused on creating personal function library in 🇨.
+
+The library inludes a selection of standard `Libc` functions which are to be used in other 4️⃣2️⃣ projects.
+
+It is completed with `additional`, mainly string related functions. `Bonus` is centered around `linked list`.
+
+Project passes all of the 42 testers successfully, including Franzinette `strict`.
+
+Build as library 📚 thus each function is using each other when applicable.
+
+For other information, refer the main page.
 
 ## Contents
 
@@ -33,14 +47,8 @@ Here is the table of functions, including bonus.
 
 Mandatory part combines Libc and additional functions, these are located in `sources` folder.
 
-Header is in includes, `-I` compiler is used to allow include `<libft.h>` instead of `"libft.h"`.
+Header is in includes, `-I` is used in `Makefile` to allow include `<libft.h>` instead of `"libft.h"`.
 
-Bonuses are located in their own separate `bonus` directory under `sources`.
+Bonuses are located in their own `bonus` directory under `sources` and they use `shared` header file.
 
-## General
-
-Passes all of the 42 testers successfully, including Franzinette `strict`.
-
-Build as library 📚 thus each function is using each other when applicable.
-
-For other information, see the main page.
+### Cheers and good luck on your 42 journey!
