@@ -16,7 +16,7 @@ CC   := cc
 RM   := rm -rf
 AR   := ar -rcs
 
-CFLAGS    = -Wall -Werror -Wextra
+CFLAGS    := -Wall -Werror -Wextra
 CPPFLAGS  := -c -MMD -MP
 MAKEFLAGS += --no-print-directory -j4
 
@@ -24,6 +24,7 @@ SOURCEDIR := sources
 HEADERDIR := includes
 BUILDDIR  := build
 BUILDLOG  := build.log
+BONUSFLAG := .bonus
 
 MODULES   := bonus
 
@@ -91,12 +92,15 @@ vpath %.c $(SOURCEDIR)
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@$(AR) $(NAME) $^ -o $(NAME)
+	@$(AR) $(NAME) $^
 	printf "$(V)$(B)Binary:$(T)$(Y) $(NAME) $(T)\n"
 
-bonus: $(OBJECTS) $(OBJECTS_BONUS)
-	@$(AR) $(NAME) $^ -o $(NAME)
+bonus: $(BONUSFLAG)
+
+$(BONUSFLAG): $(OBJECTS) $(OBJECTS_BONUS)
+	@$(AR) $(NAME) $^
 	printf "$(V)$(B)Binary:$(T)$(Y) $(NAME) $(T)\n"
+	@touch $(BONUSFLAG)
 
 re: fclean
 	make all
@@ -122,7 +126,7 @@ endef
 # **************************************************************************** #
 
 clean:
-	$(call delete_cmd, $(BUILDDIR), $(BUILDLOG))
+	$(call delete_cmd, $(BUILDDIR), $(BUILDLOG), $(BONUSFLAG))
 
 fclean: clean
 	$(call delete_cmd, $(NAME))
