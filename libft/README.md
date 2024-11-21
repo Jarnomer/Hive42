@@ -2,47 +2,43 @@
 
 Some of Standard 🇨 Library functions with little bit of spice 🌶️.
 
-## TOC
-
-* [Contents](#Contents)
-* [General](#General)
-
-
-### Contents
+## Contents
 
 Here is the table of functions, including bonus.
 
 | **Libc**              | **Additional**        | **Bonus**               |
 |------------------------|-----------------------|--------------------------|
-| `ft_atoi.c`           | `ft_itoa.c`          | `ft_lstadd_back_bonus.c`|
-| `ft_bzero.c`          | `ft_putchar_fd.c`    | `ft_lstadd_front_bonus.c`|
-| `ft_calloc.c`         | `ft_putendl_fd.c`    | `ft_lstclear_bonus.c`   |
-| `ft_isalnum.c`        | `ft_putnbr_fd.c`     | `ft_lstdelone_bonus.c`  |
-| `ft_isalpha.c`        | `ft_putstr_fd.c`     | `ft_lstiter_bonus.c`    |
-| `ft_isascii.c`        | `ft_split.c`         | `ft_lstlast_bonus.c`    |
-| `ft_isdigit.c`        | `ft_strdup.c`        | `ft_lstmap_bonus.c`     |
-| `ft_isprint.c`        | `ft_striteri.c`      | `ft_lstnew_bonus.c`     |
-| `ft_memchr.c`         | `ft_strjoin.c`       | `ft_lstsize_bonus.c`    |
-| `ft_memcmp.c`         | `ft_strmapi.c`       |                          |
-| `ft_memcpy.c`         | `ft_strtrim.c`       |                          |
-| `ft_memmove.c`        | `ft_substr.c`        |                          |
-| `ft_memset.c`         |                       |                          |
-| `ft_strchr.c`         |                       |                          |
-| `ft_strlcat.c`        |                       |                          |
-| `ft_strlcpy.c`        |                       |                          |
-| `ft_strlen.c`         |                       |                          |
-| `ft_strncmp.c`        |                       |                          |
-| `ft_strnstr.c`        |                       |                          |
-| `ft_strrchr.c`        |                       |                          |
-| `ft_tolower.c`        |                       |                          |
-| `ft_toupper.c`        |                       |                          |
+| `ft_atoi`           | `ft_itoa`          | `ft_lstadd_back_bonus`|
+| `ft_bzero`          | `ft_putchar_fd`    | `ft_lstadd_front_bonus`|
+| `ft_calloc`         | `ft_putendl_fd`    | `ft_lstclear_bonus`   |
+| `ft_isalnum`        | `ft_putnbr_fd`     | `ft_lstdelone_bonus`  |
+| `ft_isalpha`        | `ft_putstr_fd`     | `ft_lstiter_bonus`    |
+| `ft_isascii`        | `ft_split`         | `ft_lstlast_bonus`    |
+| `ft_isdigit`        | `ft_strdup`        | `ft_lstmap_bonus`     |
+| `ft_isprint`        | `ft_striteri`      | `ft_lstnew_bonus`     |
+| `ft_memchr`         | `ft_strjoin`       | `ft_lstsize_bonus`    |
+| `ft_memcmp`         | `ft_strmapi`       |                          |
+| `ft_memcpy`         | `ft_strtrim`       |                          |
+| `ft_memmove`        | `ft_substr`        |                          |
+| `ft_memset`         |                       |                          |
+| `ft_strchr`         |                       |                          |
+| `ft_strlcat`        |                       |                          |
+| `ft_strlcpy`        |                       |                          |
+| `ft_strlen`         |                       |                          |
+| `ft_strncmp`        |                       |                          |
+| `ft_strnstr`        |                       |                          |
+| `ft_strrchr`        |                       |                          |
+| `ft_tolower`        |                       |                          |
+| `ft_toupper`        |                       |                          |
 
-### General
+## General
 
-Written fully according the norm and passes all the 42 testers successfully.
+Written fully according the norm and passes all of the 42 testers successfully.
 
-Mandatory part is combination of Libc and additional functions, these are located in sources folder.
+Build as library 📚 meaning each function is written using each other when possible.
+
+Mandatory part is combination of Libc and additional functions, these are located in `sources` folder.
 
 Header is in includes, `-I` compiler is used to allow include `<libft.h>` instead of `"libft.h"`.
 
-Bonuses are located in their own separate directory under sources. Here is the table of functions.
+Bonuses are located in their own separate `bonus` directory under `sources`.

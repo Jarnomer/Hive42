@@ -92,10 +92,11 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@$(AR) $(NAME) $^ -o $(NAME)
-	printf "$(V)$(B)Binary:$(T)$(Y) $@ $(T)\n"
+	printf "$(V)$(B)Binary:$(T)$(Y) $(NAME) $(T)\n"
 
 bonus: $(OBJECTS) $(OBJECTS_BONUS)
 	@$(AR) $(NAME) $^ -o $(NAME)
+	printf "$(V)$(B)Binary:$(T)$(Y) $(NAME) $(T)\n"
 
 re: fclean
 	make all
