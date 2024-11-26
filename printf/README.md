@@ -27,7 +27,7 @@ Main function utilizes `va_list` from standard library. Following `specifiers` m
 | `%p`          | Prints a pointer in hexadecimal format.                |
 | `%d`          | Prints a decimal number.                                             |
 | `%i`          | Prints an integer number.                                                  |
-| `%u`          | Prints an unsigned decimal number.                                   |
+| `%u`          | Prints an unsigned integer number.                                   |
 | `%x`          | Prints a hexadecimal number in lowercase.                     |
 | `%X`          | Prints a hexadecimal number in uppercase.                     |
 | `%%`          | Prints a percent sign.                                                        |
@@ -40,7 +40,7 @@ In order to check specifiers and easy up the hexadecimal printing, following mac
 # define SPECS  "cspdiuxX%"
 ```
 
-As an example, recursive implementation of hexadecimal printing. Same function is used for `%p` specifier.
+As an example, `recursive` implementation of hexadecimal printing. Same function is used for `%p` specifier.
 
 ```c
 void format_hex(t_print *output, unsigned long hex, char spec)
