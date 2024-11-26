@@ -10,4 +10,4 @@ If you are interested in error testers for your `pipex`, `so_long` or `cub3D`, y
 |--------|------------------------|---------------------------|
 | libft  | ✅ 125/100             | Standard 🇨 Library functions with added spicing 🌶️.     |
 | gnl    | ✅ 125/100             | Read file descriptors with 🇨, one line at the time 📖.  |
-| printf | ✅ 100/100             | Legendary recreation of printf in 🇨, limited edition.   |
+| printf | ✅ 100/100             | Recreation of legendary printf in 🇨, limited ft_edition.   |

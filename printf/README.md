@@ -1,58 +1,64 @@
 # printf
 
-Legendary printf recreation in 🇨, limited edition.
+Recreation of legendary printf in 🇨, limited ft_edition.
 
 ## General
 
-`gnl` aims to read file descriptors line by line and is meant to be integrated eventually into `libft`.
+The goal of the project is to replicate limited functionality of original `printf`.
 
-This project is completed using `linked list` where nodes include read content and address to next node.
+Project only includes modified `put_fd` functions from `libft` to keep track of written bytes.
+
+Struct is used to manage all results including `-1` return value in case of `error`.
 
 ```c
-typedef struct s_gnl
+typedef struct s_print
 {
-  char         *content;
-  struct s_gnl *next;
-}  t_gnl;
+	int result;
+	int length;
+}	t_print;
 ```
 
-`BUFFER_SIZE` defines how many characters are read each time. If not included during runtime, it is set by header.
+Main function utilizes `va_list` from standard library. Following `specifiers` must be handled.
+
+| **Specifier** | **Description**                                                                 |
+|---------------|---------------------------------------------------------------------------------|
+| `%c`          | Prints a single character.                                                     |
+| `%s`          | Prints a string.                       |
+| `%p`          | Prints a pointer in hexadecimal format.                |
+| `%d`          | Prints a decimal number.                                             |
+| `%i`          | Prints an integer number.                                                  |
+| `%u`          | Prints an unsigned decimal number.                                   |
+| `%x`          | Prints a hexadecimal number in lowercase.                     |
+| `%X`          | Prints a hexadecimal number in uppercase.                     |
+| `%%`          | Prints a percent sign.                                                        |
+
+In order to check specifiers and easy up the hexadecimal printing, following macros are included in the header.
 
 ```c
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
+# define HEXUPP "0123456789ABCDEF"
+# define HEXLOW "0123456789abcdef"
+# define SPECS  "cspdiuxX%"
 ```
 
-Function `clean_list` frees all nodes every time new line is build or everything if `malloc` fails or `EOF` is reached.
+As an example, recursive implementation of hexadecimal printing. Same function is used for `%p` specifier.
 
 ```c
-char *clean_list(t_gnl **lst, char *line)
+void format_hex(t_print *output, unsigned long hex, char spec)
 {
-  t_gnl  *temp;
-
-  if (!lst || !*lst)
-    return (NULL);
-  while ((*lst)->next)
-  {
-    temp = (*lst)->next;
-    free((*lst)->content);
-    free(*lst);
-    *lst = temp;
-  }
-  if (line && *line)
-    return (line);
-  free((*lst)->content);
-  free(*lst);
-  free(line);
-  *lst = NULL;
-  return (NULL);
+  if (hex >= 16)
+    format_hex(output, hex / 16, spec);
+  if (spec == 'p' && hex < 16)
+    format_str(output, "0x");
+  if (output->length == -1)
+    return ;
+  if (spec == 'x' || spec == 'p')
+    format_chr(output, HEXLOW[hex %= 16]);
+  else
+    format_chr(output, HEXUPP[hex %= 16]);
 }
 ```
 
-In `bonus`, multiple file descriptors must be supported which introduces some minor changes to `gnl` functions.
-
-Project `passes` many of the 42 `testers`, including Franzinette `strict`, although timeout has to be modified.
+Project `passes` many of the 42 `testers`, including Franzinette `strict`.
 
 For other information, please refer the main page.
 
