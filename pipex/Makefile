@@ -81,7 +81,7 @@ SOURCES_BONUS := $(addsuffix _bonus.c, $(SOURCES_BONUS))
 
 OBJECTS := $(addprefix $(BUILDDIR)/, $(SOURCES:.c=.o))
 
-OBJECTS_BONUS = $(addprefix $(BONUSDIR)/$(BUILDDIR)/, $(SOURCES_BONUS:.c=.o))
+OBJECTS_BONUS = $(addprefix $(BUILDDIR)/, $(SOURCES_BONUS:.c=.o))
 
 SOURCEDIR += $(addprefix $(BONUSDIR)/, $(SOURCEDIR))
 
@@ -110,7 +110,6 @@ $(BONUSFLAG): libft $(OBJECTS_BONUS)
 	@touch $(BONUSFLAG)
 
 libft:
-	echo "$(SOURCES_BONUS) \n $(SOURCEDIR)"
 	@make -C $(LIBFTDIR)
 
 run: all
@@ -119,6 +118,9 @@ run: all
 
 re: fclean
 	make all
+
+reb: fclean
+	make bonus
 
 debug: CFLAGS += $(DEBUGFLAGS)
 debug: re
@@ -191,7 +193,7 @@ $(foreach build, $(BUILDDIR), $(eval $(call build_cmd, $(build))))
 #    PHONY
 # **************************************************************************** #
 
-.PHONY: all bonus re
+.PHONY: all bonus re reb
 .PHONY: debug libft
 .PHONY: clean fclean
 

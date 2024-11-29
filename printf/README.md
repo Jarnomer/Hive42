@@ -8,7 +8,7 @@ The goal of the project is to replicate limited functionality of original `print
 
 Project only includes modified `put_fd` functions from `libft` to keep track of written bytes.
 
-Struct is used to manage all results including `-1` return value in case of `error`.
+Struct is used to manage all results including `-1` in case of `error`.
 
 ```c
 typedef struct s_print
@@ -18,7 +18,7 @@ typedef struct s_print
 }	t_print;
 ```
 
-Main function utilizes `va_list` from standard library. Following `specifiers` must be handled.
+Main function utilizes `va_list` from standard library. Following `specifiers` are handled.
 
 | **Specifier** | **Description**                                                                 |
 |---------------|---------------------------------------------------------------------------------|
