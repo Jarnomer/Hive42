@@ -10,5 +10,6 @@ If you are interested in error testers for your `pipex`, `so_long` or `cub3D`, y
 |--------|------------------------|---------------------------|
 | libft  | ✅ 125/100             | Standard 🇨 Library functions with added spicing 🌶️.      |
 | gnl    | ✅ 125/100             | Read file descriptors with 🇨, one line at the time 📖.   |
-| printf | ✅ 100/100             | Recreation of legendary printf in 🇨, limited ft_edition. |
-| pipex  | ✅ 125/100             | Chaining unix command with 🇨 using pipes 💦 and forks 🍴.  |
+| ft_printf | ✅ 100/100             | Recreation of legendary printf in 🇨, limited ft_edition. |
+| pipex  | ✅ 125/100             | Chain unix command in style using pipes and forks 🍴.  |
+| push_swap  | ✅ 125/100             | Sort numbers using two stacks and turkey sort.  |

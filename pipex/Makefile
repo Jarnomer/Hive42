@@ -66,7 +66,7 @@ VLGFLAGS := --leak-check=full \
 
 SOURCES := main \
            init \
-           exec \
+           child \
            wait \
            path \
            free \
