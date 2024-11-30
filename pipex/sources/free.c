@@ -41,5 +41,5 @@ void	self_destruct(t_pipex *ppx)
 	if (ppx->temp != NULL)
 		ft_free_single((void **)&ppx->temp);
 	if (ppx->pids != NULL)
-        ft_free_single((void **)&ppx->pids);
+		ft_free_single((void **)&ppx->pids);
 }
