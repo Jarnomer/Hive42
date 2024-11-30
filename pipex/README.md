@@ -6,6 +6,8 @@ Chaining unix command with 🇨 using pipes and forks 🍴.
 
 Goal of the project is to run multiple `unix` commands with `execve` by creating child processes with `fork` and communicating between them using `pipe`.
 
+For studies perspective I `highly` recommend that you finish the `bonus` part of this project. It will serve you well in `minishell`.
+
 ## Usage
 
 Execution needs an `infile` to open, `two` unix `commands` and `outfile` to `truncate` the result:
@@ -36,7 +38,9 @@ Will be the same as bash syntax:
 
 ## Libft
 
-This is the first project featuring `libft` with added `ft_printf` and `gnl`. All `linked list` and additional memory deallocation functions are also included.
+This is the first project featuring `libft` with added `ft_printf` and `gnl`. All `linked list` functions are also included.
+
+Additional memory deallocation functions were added for better management.
 
 ```c
 ft_free_double((void ***)&ppx->cmd);
