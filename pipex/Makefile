@@ -27,7 +27,7 @@ BONUSFLAG := .bonus
 LIBFTDIR  := ./libft
 LIBFTBIN  := libft.a
 
-TESTCASE  := ./pipex "Makefile" ls 'wc -l' outf && cat outf && rm -rf outf
+TESTCASE  := ./$(NAME) "Makefile" ls 'wc -l' outf && cat outf && rm -rf outf
 
 # **************************************************************************** #
 #    COMMANDS
