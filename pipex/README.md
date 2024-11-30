@@ -1,6 +1,6 @@
 # pipex
 
-Chaining unix command with 🇨 using pipes and forks 🍴.
+Chain unix command in style using pipes and forks 🍴.
 
 ## General
 
@@ -40,7 +40,7 @@ Will be the same as bash syntax:
 
 This is the first project featuring `libft` with added `ft_printf` and `gnl`. All `linked list` functions are also included.
 
-Additional memory deallocation functions were added for better management.
+Additional deallocation functions were added for better memory management.
 
 ```c
 ft_free_double((void ***)&ppx->cmd);
