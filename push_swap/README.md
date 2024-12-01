@@ -60,11 +60,11 @@ Only following `commands` are allowed by the algorithm. Each time command is tri
 | rrr     | Perform `rra` and `rrb` at the same time.        |
 
 ```c
-void	rra(t_stack **a, bool checker)
+void rra(t_stack **a, bool checker)
 {
-	reverse(a);
-	if (!checker)
-		ft_printf("rra\n");
+  reverse(a);
+  if (!checker)
+    ft_printf("rra\n");
 }
 ```
 
@@ -87,8 +87,11 @@ static void reverse(t_stack **s)
 ## Resources
 
 [push_swap_tester](https://github.com/LeoFu9487/push_swap_tester) for basic tests and leaks testing.
+
 [Push-Swap-Tester](https://github.com/gemartin99/Push-Swap-Tester) for more thorough testing and getting performance results.
+
 [PushSwap-ProChecker](https://github.com/ailopez-o/42Barcelona-PushSwap-ProChecker) fantastic tool to visualize your algorithm.
+
 [Push Swap Visualizer](https://push-swap-visualizer.vercel.app/) simple way to generate numbers for testing.
 
 For other information, please refer the main page.
