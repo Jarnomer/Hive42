@@ -25,47 +25,47 @@ static void	exit_failure(t_stack **a, t_stack **b, char **cmd)
 	error_occured(a);
 }
 
-static void	trigger_command(t_stack **a, t_stack **b, char *cmd, int len)
+static void	trigger_command(t_stack **a, t_stack **b, char *cmd)
 {
-	if (ft_strnstr(cmd, "pa\n", len) && len == 3)
+	if (ft_strcmp(cmd, "pa\n"))
 		pa(a, b, true);
-	else if (ft_strnstr(cmd, "pb\n", len) && len == 3)
+	else if (ft_strcmp(cmd, "pb\n"))
 		pb(b, a, true);
-	else if (ft_strnstr(cmd, "sa\n", len) && len == 3)
+	else if (ft_strcmp(cmd, "sa\n"))
 		sa(a, true);
-	else if (ft_strnstr(cmd, "sb\n", len) && len == 3)
+	else if (ft_strcmp(cmd, "sb\n"))
 		sb(b, true);
-	else if (ft_strnstr(cmd, "ss\n", len) && len == 3)
+	else if (ft_strcmp(cmd, "ss\n"))
 		ss(a, b, true);
-	else if (ft_strnstr(cmd, "ra\n", len) && len == 3)
+	else if (ft_strcmp(cmd, "ra\n"))
 		ra(a, true);
-	else if (ft_strnstr(cmd, "rb\n", len) && len == 3)
+	else if (ft_strcmp(cmd, "rb\n"))
 		rb(b, true);
-	else if (ft_strnstr(cmd, "rr\n", len) && len == 3)
+	else if (ft_strcmp(cmd, "rr\n"))
 		rr(a, b, true);
-	else if (ft_strnstr(cmd, "rra\n", len) && len == 4)
+	else if (ft_strcmp(cmd, "rra\n"))
 		rra(a, true);
-	else if (ft_strnstr(cmd, "rrb\n", len) && len == 4)
+	else if (ft_strcmp(cmd, "rrb\n"))
 		rrb(b, true);
-	else if (ft_strnstr(cmd, "rrr\n", len) && len == 4)
+	else if (ft_strcmp(cmd, "rrr\n"))
 		rrr(a, b, true);
 	else
 		exit_failure(a, b, &cmd);
 }
 
-static void	build_stack(int ac, char **av, t_stack **a)
+static void	build_stack(int argc, char **argv, t_stack **a)
 {
-	if (ac < 2)
+	if (argc < 2)
 		exit(EXIT_FAILURE);
-	else if (ac == 2 && *av[1])
-		split_argv(ac, av[1], a);
-	else if ((ac == 2 && !*av[1])
-		|| is_invalid_input(ac, av, false)
-		|| !stack_init(ac, av, a, false))
+	else if (argc == 2 && *argv[1])
+		split_argv(argc, argv[1], a);
+	else if ((argc == 2 && !*argv[1])
+		|| is_invalid_input(argc, argv, false)
+		|| stack_init(argc, argv, a, false) == -1)
 		error_occured(a);
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -74,14 +74,14 @@ int	main(int ac, char **av)
 
 	a = NULL;
 	b = NULL;
-	build_stack(ac, av, &a);
+	build_stack(argc, argv, &a);
 	len = stack_size(a);
 	while (true)
 	{
 		cmd = get_next_line(STDIN_FILENO);
 		if (!cmd)
 			break ;
-		trigger_command(&a, &b, cmd, ft_strlen(cmd));
+		trigger_command(&a, &b, cmd);
 		free(cmd);
 	}
 	if (stack_sorted(a) && stack_size(a) == len)

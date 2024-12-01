@@ -12,6 +12,10 @@ Project uses `turkey sort` where each number targets their `closest` `smallest` 
 
 Stacks are build as `doubly linked lists` 
 
+## Bonus
+
+
+
 ## Commands
 
 Only following `11 commands` are allowed by sorting algorithm. Each time command is triggered, run the operation and print it to standard out.
