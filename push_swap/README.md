@@ -8,7 +8,9 @@ Goal of the project is to sort numbers in stack using the least amounts of comma
 
 You have `two` stacks available, stack `a` and `b`. Numbers are initially stored in stack `a`.
 
-Project uses `turkey sort` where each number targets their `closest` `smallest` or `largest` before `push` command. Doing so arranges numbers into stack `b` in `decending` order and pushing them back to stack `a` is reverses it to `ascending` order.
+Project uses `turkey sort` where each number targets their `closest` `smallest` or `largest` number before `push` command. Doing so arranges numbers into stack `b` in `decending` order and pushing them back to stack `a` reverses it to `ascending` order.
+
+Stacks are build as `doubly linked lists` 
 
 ## Commands
 
@@ -27,6 +29,31 @@ Only following `11 commands` are allowed by sorting algorithm. Each time command
 | rra     | Shift down all elements of stack a by 1, last becomes first. |
 | rrb     | Shift down all elements of stack b by 1, last becomes first. |
 | rrr     | Perform `rra` and `rrb` at the same time.        |
+
+```c
+void	rra(t_stack **a, bool checker)
+{
+	reverse(a);
+	if (!checker)
+		ft_printf("rra\n");
+}
+```
+
+```c
+static void reverse(t_stack **s)
+{
+  t_stack  *bottom;
+
+  if (!s || !*s || !(*s)->next)
+    return ;
+  bottom = (t_stack *)ft_lstlast((t_list *)*s);
+  bottom->prev->next = NULL;
+  bottom->next = *s;
+  bottom->prev = NULL;
+  *s = bottom;
+  bottom->next->prev = bottom;
+}
+```
 
 ## Resources
 
