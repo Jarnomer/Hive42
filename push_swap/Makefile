@@ -28,7 +28,7 @@ BONUSBIN  := checker
 LIBFTDIR  := ./libft
 LIBFTBIN  := libft.a
 
-TESTCASE  := ./$(NAME) "42 8 888 9001 0 -123"
+TESTCASE  := ./$(NAME) "42 0 -1 3 2"
 
 # **************************************************************************** #
 #    COMMANDS

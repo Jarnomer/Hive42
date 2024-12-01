@@ -1,24 +1,49 @@
 # push_swap
 
-Sort numbers using two stacks and turkey sort.
+Sorting numbers using two stacks and turkey sort.
 
 ## General
 
-Goal of the project is to sort numbers in stack using the least amounts of commands.
+Goal of the project is to sort numbers using two stacks and least amounts of commands.
 
-You have `two` stacks available, stack `a` and `b`. Numbers are initially stored in stack `a`.
+The available stacks are `a` and `b`. Numbers are initially stored in stack `a` in random order.
 
-Project uses `turkey sort` where each number targets their `closest` `smallest` or `largest` number before `push` command. Doing so arranges numbers into stack `b` in `decending` order and pushing them back to stack `a` reverses it to `ascending` order.
+Algorithm uses `turkey sort` where each number targets their `closest` smallest or largest `number` before push command. Doing so arranges numbers into stack `b` in `decending` order and pushing them back to stack `a` reverses it to `ascending` order.
 
-Stacks are build as `doubly linked lists` 
+Stacks are build as `doubly linked list` to allow straight forward operation of `commands`.
 
-## Bonus
+## Usage
 
+You can run push_swap by giving it numbers in two ways. It prints the commands to `STDOUT`. Incorrect input results to `Error`.
 
+```bash
+./push_swap 42 0 -1 3 2
+```
+
+```bash
+./push_swap "42 0 -1 3 2"
+```
+
+```
+pb
+pb
+rra
+sa
+ra
+pa
+rra
+pa
+rra
+rra
+rra
+rra
+```
+
+Build your own checker application. Result of commands push_swap triggered can be piped into it.
 
 ## Commands
 
-Only following `11 commands` are allowed by sorting algorithm. Each time command is triggered, run the operation and print it to standard out.
+Only following `commands` are allowed by the algorithm. Each time command is triggered, run the operation and print it to `STDOUT`.
 
 | Command | Description                                                      |
 |---------|-----------------------------------------------------------------------------|
@@ -61,7 +86,10 @@ static void reverse(t_stack **s)
 
 ## Resources
 
-Project `passes` many of the 42 `testers`, including [franzinette](https://github.com/xicodomingues/francinette) `strict` excluding quotes and backslashes.
+[push_swap_tester](https://github.com/LeoFu9487/push_swap_tester) for basic tests and leaks testing.
+[Push-Swap-Tester](https://github.com/gemartin99/Push-Swap-Tester) for more thorough testing and getting performance results.
+[PushSwap-ProChecker](https://github.com/ailopez-o/42Barcelona-PushSwap-ProChecker) fantastic tool to visualize your algorithm.
+[Push Swap Visualizer](https://push-swap-visualizer.vercel.app/) simple way to generate numbers for testing.
 
 For other information, please refer the main page.
 
