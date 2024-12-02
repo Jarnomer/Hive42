@@ -36,7 +36,7 @@ ra
 
 `Checker` can be used the same way, then write commands to `STDIN` and finish input with `Crtl + D`. 
 
-If stack was sorted correctly, `OK` is shown in `STDOUT`.
+If stack was sorted correctly, `OK` is shown in `STDOUT` else writes `KO`. Incorrect command results into `Error`.
 
 Other option is to assign numbers into `ARG` and use `push_swap` to pass commands into checker.
 
