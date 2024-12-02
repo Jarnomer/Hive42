@@ -15,24 +15,24 @@
 static void	update_target(t_stack *b, t_stack *a)
 {
 	t_stack	*temp;
-	t_stack	*deal;
-	long	best;
+	t_stack	*target;
+	long	closest_larger;
 
 	while (b)
 	{
 		temp = a;
-		best = LONG_MAX;
+		closest_larger = LONG_MAX;
 		while (temp)
 		{
-			if (temp->num > b->num && temp->num < best)
+			if (temp->num > b->num && temp->num < closest_larger)
 			{
-				best = temp->num;
-				deal = temp;
+				closest_larger = temp->num;
+				target = temp;
 			}
 			temp = temp->next;
 		}
-		if (best != LONG_MAX)
-			b->target = deal;
+		if (closest_larger != LONG_MAX)
+			b->target = target;
 		else
 			b->target = find_smallest(a);
 		b = b->next;

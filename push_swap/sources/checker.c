@@ -27,28 +27,28 @@ static void	exit_failure(t_stack **a, t_stack **b, char **cmd)
 
 static void	trigger_command(t_stack **a, t_stack **b, char *cmd)
 {
-	if (ft_strcmp(cmd, "pa\n"))
+	if (!ft_strcmp(cmd, "pa\n"))
 		pa(a, b, true);
-	else if (ft_strcmp(cmd, "pb\n"))
+	else if (!ft_strcmp(cmd, "pb\n"))
 		pb(b, a, true);
-	else if (ft_strcmp(cmd, "sa\n"))
+	else if (!ft_strcmp(cmd, "sa\n"))
 		sa(a, true);
-	else if (ft_strcmp(cmd, "sb\n"))
+	else if (!ft_strcmp(cmd, "sb\n"))
 		sb(b, true);
-	else if (ft_strcmp(cmd, "ss\n"))
+	else if (!ft_strcmp(cmd, "ss\n"))
 		ss(a, b, true);
-	else if (ft_strcmp(cmd, "ra\n"))
-		ra(a, true);
-	else if (ft_strcmp(cmd, "rb\n"))
-		rb(b, true);
-	else if (ft_strcmp(cmd, "rr\n"))
-		rr(a, b, true);
-	else if (ft_strcmp(cmd, "rra\n"))
+	else if (!ft_strcmp(cmd, "rra\n"))
 		rra(a, true);
-	else if (ft_strcmp(cmd, "rrb\n"))
+	else if (!ft_strcmp(cmd, "rrb\n"))
 		rrb(b, true);
-	else if (ft_strcmp(cmd, "rrr\n"))
+	else if (!ft_strcmp(cmd, "rrr\n"))
 		rrr(a, b, true);
+	else if (!ft_strcmp(cmd, "ra\n"))
+		ra(a, true);
+	else if (!ft_strcmp(cmd, "rb\n"))
+		rb(b, true);
+	else if (!ft_strcmp(cmd, "rr\n"))
+		rr(a, b, true);
 	else
 		exit_failure(a, b, &cmd);
 }

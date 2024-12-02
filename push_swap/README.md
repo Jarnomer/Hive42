@@ -2,7 +2,7 @@
 
 Sorting numbers using two stacks and turkey sort.
 
-## General
+## :zap: General
 
 Goal of the project is to sort numbers using two stacks and least amounts of commands.
 
@@ -10,18 +10,18 @@ The available stacks are `a` and `b`. Numbers are initially stored in stack `a` 
 
 Algorithm uses `turkey sort` where each number targets their `closest` smallest or largest `number` before push command. Doing so arranges numbers into stack `b` in `decending` order and pushing them back to stack `a` reverses it to `ascending` order.
 
-Stacks are build as `doubly linked list` to allow straight forward operation of `commands`.
+Stacks are build as `doubly linked lists` to allow straight forward operation of `commands`.
 
 ## Usage
 
-You can run push_swap by giving it numbers in two ways. It prints the commands to `STDOUT`. Incorrect input results to `Error`.
+You can run `push_swap` by giving it numbers in two ways. It prints the commands to `STDOUT`. Incorrect input results to `Error`.
 
 ```bash
-./push_swap 42 0 -1 3 2
+./push_swap 4 0 1 3 2
 ```
 
 ```bash
-./push_swap "42 0 -1 3 2"
+./push_swap "4 0 1 3 2"
 ```
 
 ```
@@ -29,14 +29,21 @@ pb
 pb
 rra
 sa
+pa
+pa
 ra
-pa
-rra
-pa
-rra
-rra
-rra
-rra
+```
+
+`Checker` can be used the same way, then write commands to `STDIN` and finish input with `Crtl + D`. 
+
+Other option is to assign numbers into `ARG` and use `push_swap` to pass commands into checker.
+
+```bash
+./checker "4 0 1 3 2"
+```
+
+```bash
+ARG="4 0 1 3 2"; ./push_swap $ARG | ./checker $ARG
 ```
 
 Build your own checker application. Result of commands push_swap triggered can be piped into it.

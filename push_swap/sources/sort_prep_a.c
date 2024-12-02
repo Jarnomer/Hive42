@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	update_deal(t_stack *s)
+static void	update_is_deal(t_stack *s)
 {
 	t_stack	*bargain;
 	int		deal;
@@ -49,24 +49,24 @@ static void	update_cost(t_stack *a)
 static void	update_target(t_stack *a, t_stack *b)
 {
 	t_stack	*temp;
-	t_stack	*deal;
-	long	best;
+	t_stack	*target;
+	long	closest_smaller;
 
 	while (a)
 	{
 		temp = b;
-		best = LONG_MIN;
+		closest_smaller = LONG_MIN;
 		while (temp)
 		{
-			if (temp->num < a->num && temp->num > best)
+			if (temp->num < a->num && temp->num > closest_smaller)
 			{
-				best = temp->num;
-				deal = temp;
+				closest_smaller = temp->num;
+				target = temp;
 			}
 			temp = temp->next;
 		}
-		if (best != LONG_MIN)
-			a->target = deal;
+		if (closest_smaller != LONG_MIN)
+			a->target = target;
 		else
 			a->target = find_largest(b);
 		a = a->next;
@@ -96,5 +96,5 @@ void	sort_prep_a(t_stack *a, t_stack *b)
 	prepare_stack(b, stack_size(b));
 	update_target(a, b);
 	update_cost(a);
-	update_deal(a);
+	update_is_deal(a);
 }
