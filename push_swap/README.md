@@ -114,6 +114,6 @@ static void reverse(t_stack **s)
 
 [Push Swap Visualizer](https://push-swap-visualizer.vercel.app/) simple way to generate numbers for testing.
 
-For other information, please refer the main page.
+For general information, please refer the landing page.
 
 ### Cheers and good luck! 🥳
