@@ -12,7 +12,7 @@ Algorithm uses `turkey sort` where each number targets their `closest` smallest 
 
 Stacks are build as `doubly linked lists` to allow straight forward operation of `commands`.
 
-## ⚙️ Usage
+## ⚡ Usage
 
 You can run `push_swap` by giving it numbers in two ways. It prints the commands to `STDOUT`. Incorrect input results to `Error`.
 
@@ -102,7 +102,9 @@ static void reverse(t_stack **s)
 }
 ```
 
-## Resources
+## ♻️ Resources
+
+[push_swap TUTORIAL!](https://www.youtube.com/watch?v=wRvipSG4Mmk) video presentation on turkey sort algorithm.
 
 [push_swap_tester](https://github.com/LeoFu9487/push_swap_tester) for basic tests and leaks testing.
 
