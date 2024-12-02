@@ -17,7 +17,7 @@
 NAME := libft.a
 
 SOURCEDIR := sources
-HEADERDIR := includes
+HEADERDIR := include
 BUILDDIR  := build
 BUILDLOG  := build.log
 BONUSFLAG := .bonus
@@ -33,10 +33,11 @@ AR := ar -rcs
 #    COMPILATION
 # **************************************************************************** #
 
-CC        := cc
-CFLAGS    := -Wall -Werror -Wextra
-CPPFLAGS  := -c -MMD -MP
-MAKEFLAGS += --no-print-directory -j4
+CC         := cc
+CFLAGS     := -Wall -Werror -Wextra
+CPPFLAGS   := -c -MMD -MP
+DEBUGFLAGS := -g -fsanitize=address
+MAKEFLAGS  += --no-print-directory -j4
 
 # **************************************************************************** #
 #    SOURCES
@@ -95,7 +96,7 @@ OBJECTS_BONUS = $(addprefix $(BUILDDIR)/, $(SOURCES_BONUS:.c=.o))
 
 SOURCEDIR += $(addprefix $(SOURCEDIR)/, $(MODULES))
 
-INCLUDES := $(addprefix -I, $(HEADERDIR))
+INCS := $(addprefix -I, $(HEADERDIR))
 
 DEPS := $(OBJECTS:.o=.d) $(OBJECTS_BONUS:.o=.d)
 
@@ -121,13 +122,20 @@ $(BONUSFLAG): $(OBJECTS) $(OBJECTS_BONUS)
 re: fclean
 	make all
 
+debug: CFLAGS += $(DEBUGFLAGS)
+debug: re
+
+nm:
+	@$(foreach h, $(HEADERDIR), norminette -R CheckDefine $(h))
+	@$(foreach s, $(SOURCEDIR), norminette -R CheckForbiddenSourceHeader $(s))
+
 # **************************************************************************** #
 #    BUILD
 # **************************************************************************** #
 
 define build_cmd
 $1/%.o: %.c | $(BUILDDIR)
-	if ! $(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $$< -o $$@ 2> $(BUILDLOG); then \
+	if ! $(CC) $(CFLAGS) $(CPPFLAGS) $(INCS) $$< -o $$@ 2> $(BUILDLOG); then \
 		printf "$(R)$(B)\nError: \
 		$(V)Unable to create object file: \
 		$(R)$(B)$$@$(Y)\n\n"; \
@@ -142,7 +150,8 @@ endef
 # **************************************************************************** #
 
 clean:
-	$(call delete_cmd, $(BUILDDIR), $(BUILDLOG), $(BONUSFLAG))
+	$(call delete_cmd, $(BUILDDIR), $(BUILDLOG))
+	@$(RM) $(BONUSFLAG)
 
 fclean: clean
 	$(call delete_cmd, $(NAME))
@@ -180,6 +189,7 @@ $(foreach build, $(BUILDDIR), $(eval $(call build_cmd, $(build))))
 # **************************************************************************** #
 
 .PHONY: all bonus re
+.PHONY: debug nm
 .PHONY: clean fclean
 
 .SILENT:
