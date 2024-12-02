@@ -2,7 +2,7 @@
 
 Sorting numbers using two stacks and turkey sort.
 
-## :zap: General
+## 📝 General
 
 Goal of the project is to sort numbers using two stacks and least amounts of commands.
 
@@ -12,7 +12,7 @@ Algorithm uses `turkey sort` where each number targets their `closest` smallest 
 
 Stacks are build as `doubly linked lists` to allow straight forward operation of `commands`.
 
-## Usage
+## ⚙️ Usage
 
 You can run `push_swap` by giving it numbers in two ways. It prints the commands to `STDOUT`. Incorrect input results to `Error`.
 
@@ -34,7 +34,9 @@ pa
 ra
 ```
 
-`Checker` can be used the same way, then write commands to `STDIN` and finish input with `Crtl + D`. If stack was sorted, `OK` is shown in `STDOUT`.
+`Checker` can be used the same way, then write commands to `STDIN` and finish input with `Crtl + D`. 
+
+If stack was sorted correctly, `OK` is shown in `STDOUT`.
 
 Other option is to assign numbers into `ARG` and use `push_swap` to pass commands into checker.
 
@@ -57,9 +59,7 @@ OK
 ARG="4 0 1 3 2"; ./push_swap $ARG | ./checker $ARG
 ```
 
-Build your own checker application. Result of commands push_swap triggered can be piped into it.
-
-## Commands
+## 📊 Commands
 
 Only following `commands` are allowed by the algorithm. Each time command is triggered, run the operation and print it to `STDOUT`.
 
