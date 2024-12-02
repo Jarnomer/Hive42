@@ -108,7 +108,7 @@ static void reverse(t_stack **s)
 
 [push_swap_tester](https://github.com/LeoFu9487/push_swap_tester) for basic tests and leaks testing.
 
-[Push-Swap-Tester](https://github.com/gemartin99/Push-Swap-Tester) more and excellent performance reports.
+[Push-Swap-Tester](https://github.com/gemartin99/Push-Swap-Tester) more testing and excellent performance reports.
 
 [PushSwap-ProChecker](https://github.com/ailopez-o/42Barcelona-PushSwap-ProChecker) fantastic tool to visualize your algorithm.
 
