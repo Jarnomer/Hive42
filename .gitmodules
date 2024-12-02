@@ -1,6 +1,8 @@
 [submodule "push_swap"]
 	path = push_swap
 	url = https://github.com/Jarnomer/push_swap
+	branch = main
 [submodule "libft"]
 	path = libft
 	url = https://github.com/Jarnomer/libft
+	branch = main
