@@ -34,12 +34,23 @@ pa
 ra
 ```
 
-`Checker` can be used the same way, then write commands to `STDIN` and finish input with `Crtl + D`. 
+`Checker` can be used the same way, then write commands to `STDIN` and finish input with `Crtl + D`. If stack was sorted, `OK` is shown in `STDOUT`.
 
 Other option is to assign numbers into `ARG` and use `push_swap` to pass commands into checker.
 
 ```bash
 ./checker "4 0 1 3 2"
+```
+
+```
+pb
+pb
+rra
+sa
+pa
+pa
+ra
+OK
 ```
 
 ```bash
