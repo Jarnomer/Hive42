@@ -90,7 +90,7 @@ OBJECTS := $(addprefix $(BUILDDIR)/, $(SOURCES:.c=.o))
 
 OBJECTS_BONUS = $(addprefix $(BUILDDIR)/, $(SOURCES_BONUS:.c=.o))
 
-INCLUDES := $(addprefix -I, $(HEADERDIR) $(LIBFTDIR)/$(HEADERDIR))
+INCS := $(addprefix -I, $(HEADERDIR) $(LIBFTDIR)/$(HEADERDIR))
 
 DEPS := $(OBJECTS:.o=.d) $(OBJECTS_BONUS:.o=.d)
 
@@ -102,19 +102,23 @@ vpath %.c $(SOURCEDIR)
 
 all: $(NAME)
 
-$(NAME): libft $(OBJECTS)
+$(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFTDIR)/$(LIBFTBIN) -o $(NAME)
 	printf "$(V)$(B)Binary:$(T)$(Y) $(NAME) $(T)\n"
 
 bonus: $(BONUSFLAG)
 
-$(BONUSFLAG): libft $(OBJECTS_BONUS)
+$(BONUSFLAG): $(OBJECTS_BONUS)
 	$(CC) $(CFLAGS) $(OBJECTS_BONUS) $(LIBFTDIR)/$(LIBFTBIN) -o $(BONUSBIN)
 	printf "$(V)$(B)Binary:$(T)$(Y) $(BONUSBIN) $(T)\n"
 	@touch $(BONUSFLAG)
 
-libft:
-	@make -C $(LIBFTDIR)
+$(OBJECTS) $(OBJECTS_BONUS): $(LIBFTDIR)/$(LIBFTBIN)
+
+libft: $(LIBFTDIR)/$(LIBFTBIN)
+
+$(LIBFTDIR)/$(LIBFTBIN): 
+	@make -C $(LIBFTDIR) all
 
 run: all
 	$(SCREENCLEAR)
@@ -125,6 +129,10 @@ re: fclean
 
 reb: fclean
 	make bonus
+
+nm:
+	@$(foreach h, $(HEADERDIR), norminette -R CheckDefine $(h))
+	@$(foreach s, $(SOURCEDIR), norminette -R CheckForbiddenSourceHeader $(s))
 
 debug: CFLAGS += $(DEBUGFLAGS)
 debug: re
@@ -144,7 +152,7 @@ endef
 
 define build_cmd
 $1/%.o: %.c | $(BUILDDIR)
-	if ! $(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $$< -o $$@ 2> $(BUILDLOG); then \
+	if ! $(CC) $(CFLAGS) $(CPPFLAGS) $(INCS) $$< -o $$@ 2> $(BUILDLOG); then \
 		printf "$(R)$(B)\nError: \
 		$(V)Unable to create object file: \
 		$(R)$(B)$$@$(Y)\n\n"; \
@@ -154,14 +162,14 @@ $1/%.o: %.c | $(BUILDDIR)
 	fi
 endef
 
-
 # **************************************************************************** #
 #    CLEAN
 # **************************************************************************** #
 
 clean:
 	@make -C $(LIBFTDIR) fclean
-	$(call delete_cmd, $(BUILDDIR), $(BUILDLOG), $(LEAKSLOG), $(BONUSFLAG))
+	$(call delete_cmd, $(BUILDDIR), $(BUILDLOG), $(LEAKSLOG))
+	@$(RM) $(BONUSFLAG)
 
 fclean: clean
 	$(call delete_cmd, $(NAME) $(BONUSBIN))
@@ -199,7 +207,7 @@ $(foreach build, $(BUILDDIR), $(eval $(call build_cmd, $(build))))
 # **************************************************************************** #
 
 .PHONY: all bonus re reb
-.PHONY: debug libft
+.PHONY: debug libft nm
 .PHONY: clean fclean
 
 .SILENT:

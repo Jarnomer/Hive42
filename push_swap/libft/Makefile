@@ -43,11 +43,9 @@ MAKEFLAGS += --no-print-directory -j4
 
 SOURCES := ft_isalpha.c \
            ft_isdigit.c \
-           ft_isspace.c \
            ft_isalnum.c \
            ft_isascii.c \
            ft_isprint.c \
-           ft_issign.c \
            ft_strlen.c \
            ft_memset.c \
            ft_bzero.c \
@@ -60,7 +58,6 @@ SOURCES := ft_isalpha.c \
            ft_strchr.c \
            ft_strrchr.c \
            ft_strncmp.c \
-           ft_strcmp.c \
            ft_memchr.c \
            ft_memcmp.c \
            ft_strnstr.c \
@@ -78,12 +75,6 @@ SOURCES := ft_isalpha.c \
            ft_putstr_fd.c \
            ft_putendl_fd.c \
            ft_putnbr_fd.c \
-           ft_printf.c \
-           ft_printf_fmt.c \
-           get_next_line.c \
-           get_next_line_utils.c \
-           ft_free_single.c \
-           ft_free_double.c \
            ft_lstnew.c \
            ft_lstadd_front.c \
            ft_lstsize.c \
@@ -92,11 +83,20 @@ SOURCES := ft_isalpha.c \
            ft_lstdelone.c \
            ft_lstclear.c \
            ft_lstiter.c \
-           ft_lstmap.c
+           ft_lstmap.c \
+           ft_printf.c \
+           ft_printf_fmt.c \
+           ft_gnl.c \
+           ft_gnl_utils.c \
+           ft_free_single.c \
+           ft_free_double.c \
+           ft_strcmp.c \
+           ft_isspace.c \
+           ft_issign.c
 
 OBJECTS := $(addprefix $(BUILDDIR)/, $(SOURCES:.c=.o))
 
-INCLUDES := $(addprefix -I, $(HEADERDIR))
+INCS := $(addprefix -I, $(HEADERDIR))
 
 DEPS := $(OBJECTS:.o=.d)
 
@@ -121,7 +121,7 @@ re: fclean
 
 define build_cmd
 $1/%.o: %.c | $(BUILDDIR)
-	if ! $(CC) $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $$< -o $$@ 2> $(BUILDLOG); then \
+	if ! $(CC) $(CFLAGS) $(CPPFLAGS) $(INCS) $$< -o $$@ 2> $(BUILDLOG); then \
 		printf "$(R)$(B)\nError: \
 		$(V)Unable to create object file: \
 		$(R)$(B)$$@$(Y)\n\n"; \
