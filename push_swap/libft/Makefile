@@ -17,7 +17,7 @@
 NAME := libft.a
 
 SOURCEDIR := sources
-HEADERDIR := includes
+HEADERDIR := include
 BUILDDIR  := build
 BUILDLOG  := build.log
 
