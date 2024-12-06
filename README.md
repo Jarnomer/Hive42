@@ -18,7 +18,7 @@
 
 This repository holds of of my `42 school` projects @ [Hive](https://www.hive.fi/en/) between 0️⃣9️⃣:2️⃣3️⃣ - 0️⃣3️⃣:2️⃣5️⃣.
 
-Studies are mostly done in `C` and `C++` programming languages. such as JavaScript and Python.
+Studies are mostly done in `C` and `C++` programming languages amongst others such as JavaScript and Python.
 
 Main `topics` cover child prosessing, multithreating, networking, sorting algorithms and Xorg with API among others.
 
