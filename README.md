@@ -22,7 +22,7 @@ Studies are mostly done in `C` and `C++` programming languages amongst others su
 
 Main `topics` cover child prosessing, multithreating, networking, sorting algorithms and Xorg with API among others.
 
-If can find my `error` handling unit `testers` for `pipex`, `so_long` and `cub3D` [here](https://github.com/Jarnomer/42Testers).
+You can find my `error` handling unit `testers` for `pipex`, `so_long` and `cub3D` [here](https://github.com/Jarnomer/42Testers).
 
 ## 📌 Projects
 
