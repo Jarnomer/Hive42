@@ -16,11 +16,11 @@
 
 ## 📝 General
 
-This repository holds of of my `42 school` projects @ [Hive](https://www.hive.fi/en/) between 0️⃣9️⃣:2️⃣3️⃣ - 0️⃣3️⃣:2️⃣5️⃣.
+This repository holds all of my `42 school` projects @ [Hive](https://www.hive.fi/en/) between 0️⃣9️⃣:2️⃣3️⃣ - 0️⃣3️⃣:2️⃣5️⃣.
 
-Studies are mostly done in `C` and `C++` programming languages amongst others such as JavaScript and Python.
+Studies are mostly done in `C` and `C++` programming languages while others such as JavaScript and Python are also introduced.
 
-Main `topics` cover child prosessing, multithreating, networking, sorting algorithms and Xorg with API among others.
+Main `topics` cover child prosessing, multithreating, networking, sorting algorithms and using Xorg with MLX API.
 
 You can find my `error` handling unit `testers` for `pipex`, `so_long` and `cub3D` [here](https://github.com/Jarnomer/42Testers).
 
@@ -34,3 +34,4 @@ You can find my `error` handling unit `testers` for `pipex`, `so_long` and `cub3
 | pipex  | ✅ 125/100             | Pipe unix commands 🐧 with redirect operators.  |
 | push_swap  | ✅ 125/100         | Sorting numbers using two 🎭 stacks and turkey sort.  |
 | so_long  | ✅ 125/100           | Small skeleton themed 2D game 🎮 featuring mlx42. |
+| philosophers  | ✅ 100/100      | Solving concurrency synchronization issues in multithreading 🧵. |
