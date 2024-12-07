@@ -22,3 +22,6 @@
 	path = so_long
 	url = https://github.com/Jarnomer/so_long
 	branch = main
+[submodule "philosophers"]
+	path = philosophers
+	url = https://github.com/Jarnomer/philosophers
